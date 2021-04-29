@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test014.html</title>
+
+
+<script type="text/javascript">
+
+	// var 키워드 사용 → msg 변수 → 함수 밖에 선언 → 전역변수(gloabl)
+	var msg = "2021년 4월의 어느 날";
+	
+	function button_onclick1()
+	{
+		//alert("첫 번째 버튼 클릭");
+		
+		// var 키워드 사용 → name 변수 → 함수 내부에 선언 → 지역변수(local)
+		//var name = "선혜연";
+		
+		// var 키워드 생략 → name 변수 → 함수 내부에 선언 → 상황에 따른 지역/전역 변수
+		name = "김서현";
+		// 첫 번째 함수가 한번도 실행되지 않았을 때는 두 번째 함수에서 서현이가 등장하지 않지만
+		// 첫 번째 함수가 한번 실행되는 순간 name 이 메모리 할당을 받고
+		// 그제서야 두 번째 함수에서도 보이게 됨 
+		
+		document.write("이름 : " + name);
+		alert(msg);
+		
+	}
+	
+	function button_onclick2()
+	{
+		//alert("두 번째 버튼 클릭");
+		
+		document.write("이름 : " + name);
+		alert(msg);
+		
+	}
+//-->
+</script>
+
+</head>
+<body>
+
+<input type="button" id="button1" value="Button" onclick="button_onclick1()"><br>
+<input type="button" id="button2" value="Button" onclick="button_onclick2()">
+
+</body>
+</html>
