@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test012.html</title>
+
+<script type="text/javascript">
+	
+	message = "<h1>Hello~!!!</h1>"
+	document.write(message);
+	alert(message);
+	
+</script>
+
+<!-- 외부 스크립트 파일을 가져오는 태그이기 때문에
+     여는 태그와 닫는 태그 사이에 
+     자바 스크립트 코드를 작성해서는 안됨 -->
+<script type="text/javascript" src="js/alertTest.js"></script>
+
+<script type="text/javascript">
+	
+	// Date 내장 객체 : 현재 시스템의 날짜와 시간
+	// var dt = Date().toString();
+	var dt = String(Date());
+	document.write(dt);
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
