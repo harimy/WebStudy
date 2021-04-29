@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test017.html</title>
+
+<style type="text/css">
+	* {color: #223322;}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeeff;}
+   input.btn {width: 90px; font-weight: bold; font-family: 맑은 고딕;}
+   input.btn:hover {color: orange;}
+   input.txt {width: 100px; text-align: right;}   
+   td {text-align: center;}
+	
+</style>
+
+<script type="text/javascript">
+	
+	// 내가 작성한 함수
+	function calCoin()
+	{
+		var amount = document.getElementById("inputAmt").value;
+		document.getElementById("outputAmt").value = amount;
+		
+		if(amount/500>0)
+		{	
+			document.getElementById("num500").value = Math.floor(amount/500);
+			amount %= 500;
+			//alert(amount);
+		}
+		if(amount/100 > 0)
+		{
+			//alert("100");
+			document.getElementById("num100").value = Math.floor(amount/100);
+			amount %= 100;
+		}
+		if(amount/50 > 0)
+		{
+			//alert("50");
+			document.getElementById("num50").value = Math.floor(amount/50);
+			amount %= 50;
+		}
+		if(amount/10 > 0)
+		{
+			//alert("10");
+			document.getElementById("num10").value = Math.floor(amount/10);
+			amount %= 10;
+		}
+		
+	}
+	
+	// 함께 작성한 함수
+	function myCalc()
+	{
+	      //테스트
+	      //alert("함수 호출 완료~!!!");
+	      var moneyStr = document.getElementById("money").value;
+	      
+	      // 테스트
+	      //alert("사용자가 입력한 금액 : " + moneyStr);
+	      
+	      var money = parseInt(moneyStr);
+	      
+	      document.getElementById("totMoney").value = money;
+	      
+	      var m500 = parseInt(money/500);		// var m500 = Math.floor(money/500);
+	      
+	      /*
+	      alert(123.456);				→ 123.456
+	      alert(Math.floor(123.456));	→ 123
+	      alert(parseInt(123.456));		→ 123
+	      */
+	      
+	      money = money%500;
+	      
+	      var m100 = parseInt(money/100);
+	      
+	      money = money%100;
+	      
+	      var m50 = parseInt(money/50);
+	      
+	      money = money%50;
+	      
+	      var m10 = parseInt(money/10);
+	      
+	      money = money%10;
+	      
+	}
+
+</script>
+
+
+</head>
+<body>
+
+<!-- 
+	특정 금액(10원 ~ 990원)을 사용자로부터 입력받아
+    화폐 단위로 구분하여 출력하는 페이지를 구성한다.
+    화폐 단위는 편의상 오백원, 백원, 오십원, 십원 으로 구분한다.
+    HTML, CSS, Javascript 를 활용한다.
+    
+    페이지 기본 레이아웃 구성
+    --------------------------------------------------------------
+    
+    금액 [           ] 원
+    
+    <결과> <취소>
+    
+    총액 [           ] 원
+    오백원    [      ] 개
+    백원	  [      ] 개
+    오십원    [      ] 개
+    십원      [      ] 개
+    
+    --------------------------------------------------------------
+-->
+
+<div>
+	<hr>
+	<form>
+		
+		
+		<!-- 내가 작성한 내용
+		금액 <input type="text" id="inputAmt" class="txtNum">
+		<br><br>
+		
+		<input type="button" class="btn" value="결과" onclick="calCoin()">
+		<input type="reset" class="btn" value="취소">
+		<br><br>
+		
+		총액<input type="text" id="outputAmt" class="txtNum" disabled="disabled">원<br>
+		오백원<input type="text" id="num500" class="coinNum" disabled="disabled">개<br>
+		백원<input type="text" id="num100" class="coinNum" disabled="disabled">개<br>
+		오십원<input type="text" id="num50" class="coinNum" disabled="disabled">개<br>
+		십원<input type="text" id="num10" class="coinNum" disabled="disabled">개<br>
+		 -->
+		
+		<table style="width: 200px;">
+          <tr>
+             <td>금액</td>
+             <td><input type="text" style="width: 100px;" class="txt" id="money"></td>
+             <td>원</td>
+          </tr>
+          
+          <tr>
+             <td colspan="3">
+             <input type="button" value="결과" class="btn" onclick="myCalc()">
+             <input type="reset" value="취소" class="btn">
+             </td>
+          </tr>
+          
+          <tr>
+             <td>총액</td>
+             <td><input type="text" style="width: 100px;" class="txt" id="totMoney" disabled="disabled"></td>
+             <td>원</td>
+          </tr>
+          
+          <tr>
+             <td>오백원</td>
+             <td><input type="text" style="width: 100px;" class="txt" id="won500" disabled="disabled"></td>
+             <td>개</td>
+          </tr>
+          
+          <tr>
+             <td>백원</td>
+             <td><input type="text" style="width: 100px;" class="txt" id="won100" disabled="disabled"></td>
+             <td>개</td>
+          </tr>
+          
+          <tr>
+             <td>오십원</td>
+             <td><input type="text" style="width: 100px;" class="txt" id="won50" disabled="disabled"></td>
+             <td>개</td>
+          </tr>
+          
+          <tr>
+             <td>십원</td>
+             <td><input type="text" style="width: 100px;" class="txt" id="won10" disabled="disabled"></td>
+             <td>개</td>
+          </tr>
+       </table>
+		
+
+	</form>
+	<hr>
+</div>
+
+</body>
+</html>
