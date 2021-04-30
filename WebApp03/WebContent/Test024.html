@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test024.html</title>
+
+<style type="text/css">
+	* {color: #223322; font-size: 15pt;}
+	h1{font-size : 30pt; text-align: center;}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeeff;}
+   input.btn {width: 150px; font-weight: bold; font-family: 맑은 고딕;}
+   input.btn:hover {color: orange;}
+   input.txt {width: 100px; text-align: center;}   
+   div form {text-align: center;}
+   div form table{text-align: center;}
+   textarea {font-family: 나눔고딕코딩; font-weight: bold; text-align: center;}
+   input.txtArray {text-align: center;}
+</style>
+
+<script type="text/javascript">
+
+	// 내가 작성한 함수
+	function myAdd()
+	{
+		// 내용 초기화 
+		document.getElementById("result").value = "";
+		
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
+		var n=0;
+		
+		// 입력
+		do
+		{
+			var str = prompt("이름 국어 영어 수학("+ (n+1) +") : ");
+			
+			if (str == "." || str == " " || str == "")
+				break;
+			
+			var temp = str.split(" ");
+			arr[0][n] = temp[0];
+			arr[1][n] = temp[1];
+			arr[2][n] = temp[2];
+			arr[3][n] = temp[3];
+			arr[4][n] = Number(temp[1]) + Number(temp[2]) + Number(temp[3]);
+			arr[5][n] = 1;
+			
+			n++;
+			
+			
+		} while (true);
+		
+		// 테스트
+		//alert(arr);
+		
+		
+		// 등수 계산
+		for (var i = 0; i < arr[0].length; i++)
+		{
+			for (var j = 0; j < arr[0].length; j++)
+			{
+				
+				if (arr[4][i] > arr[4][j])
+				{
+					arr[5][j] += 1;
+				}
+			}
+		}
+
+		
+		// 출력 
+		document.getElementById("count").value = arr[0].length;
+		document.getElementById("result").value = " 이름    국어  영어  수학  총점  등수 \n"			
+		for (var n = 0; n < arr[0].length; n++)
+		{
+			for (var m = 0; m < arr.length; m++)
+				document.getElementById("result").value += arr[m][n] + "   ";
+			document.getElementById("result").value += "\n";			
+		}	
+	}
+	
+	
+	// 함께 작성한 함수
+	
+	function actionScore()
+	{
+		//alert("함수 호출 확인");
+		
+		var str = "";
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
+		//                     이름들      국어들       영어들       수학들       총점들       등수들 
+		// 이렇게 이차원 배열로 구성하게 되면,
+		// 이름, 국, 영, 수, 총점, 등수 외에 평균이나 표준편차 같은 종목이 늘어날 수는 없지만
+		// 이름들, 국어들, 영어들,, 등 각각의 배열들은 계속해서 늘어날 수 있다.
+		// arr[6][n] 이런 형태이고 n은 계속 늘어날 수 있음 
+		
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");
+			
+			if (str=="" || str=="." || str==" ")
+				break;
+			
+			var member = str.split(" "); // 문자열 요소 배열 구성
+			
+			arr[0][n] = member[0];
+			arr[1][n] = member[1];
+			arr[2][n] = member[2];
+			arr[3][n] = member[3];
+			arr[4][n] = (Number(member[1]) + Number(member[2]) + Number(member[3])).toString();
+			arr[5][n] = 1;
+			// 모든 학생들의 데이터를 다 입력 받고 나서 등수 계산을 해야하기 때문에
+			// 일단 등수항목은 1로 초기화를 해둔다.
+			
+			n++;
+			
+		} while (true);
+		
+		// 석차 계산
+	      for (var i=0; i<arr[0].length; i++)
+	      {
+	         for (var j=0; j<arr[0].length; j++)
+	         {
+	            if(i==j)
+	            {
+	               continue;   
+	            }
+	            
+	            // j번째 총점이 i번째 총점보다 크다면~
+	            if (Number(arr[4][i]) < Number(arr[4][j]))
+	            {
+	               // i 번째 학생의 등수를 1만큼 증가
+	               // i 번째 학생의 arr[5][i] 를 1만큼 증가
+	               arr[5][i] = (Number(arr[5][i])+1).toString();
+	            }   
+	         }
+	      }
+	   
+	      
+	      var result = "";
+	      
+	      for (var j=0; j<arr[0].length; j++)
+	      {
+	         for (var k=0; k<arr.length; k++)
+	         {
+	            //alert(k + ", " + j);
+	            result += arr[k][j];
+	            
+	            if(k==5)
+	            	result += "등";
+	            else
+	            	result += " ";
+	            
+	         }
+	         result += "\n";
+	      }
+
+		document.getElementById("count").value = arr[0].length;
+		
+		document.getElementById("result").value = "이름 국어 영어 수학 총점 석차\n";
+	    document.getElementById("result").value += result;
+		
+		
+	}
+	
+</script>
+
+</head>
+<body>
+
+<!-- 
+	prompt() 를 활용하여 여러 명의 성적을 입력 받고
+	등수를 부여하여 리스트를 출력하는 페이지를 구성한다.
+	
+	HTML, CSS, Javascript 를 활용한다.
+	
+	페이지 레이아웃
+	------------------------------------------------------
+	< 성적 정보 입력 > ----------------------------------- 이름 국어 영어 수학(1) :
+	
+	전체 인원 수 : [  3] 명
+	-----------------------------------------
+	 이름   국어   영어   수학   총점   등수 
+	선혜연   90     80     70     240    1등
+	심혜진   80     70     60     xxx    2등
+	김가영   70     60     50     xxx    3등
+	-----------------------------------------
+	------------------------------------------------------
+ -->
+ 
+ 
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<div>
+			<!-- 내가 작성한 함수 동작 -->
+			<!-- 
+			<input type="button" id="add" value="성적 정보 입력" style="width: 200px" onclick="myAdd()"><br><br>
+			 -->
+			<input type="button" id="add" value="성적 정보 입력" style="width: 200px" onclick="actionScore()"><br><br>
+			 
+		</div>
+		
+		<div>
+			전체 인원 수 : 
+			<input type="text" id="count" style="width: 100px">
+			명
+			<hr style="width: 300px">
+		</div>
+		
+		<div>
+			<textarea rows="10" cols="50" id="result" readonly="readonly"></textarea>
+		</div>
+	
+	</form>
+	
+</div>
+
+
+</body>
+</html>
