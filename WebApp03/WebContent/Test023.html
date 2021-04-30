@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023.html</title>
+
+<style type="text/css">
+	* {color: #223322; font-size: 15pt;}
+	h1{font-size : 30pt; text-align: center;}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeeff;}
+   input.btn {width: 150px; font-weight: bold; font-family: 맑은 고딕;}
+   input.btn:hover {color: orange;}
+   input.txt {width: 100px; text-align: center;}   
+   div form {text-align: center;}
+   div form table{text-align: center;}
+   textarea {font-family: 나눔고딕코딩; font-weight: bold; text-align: center;}
+   input.txtArray {text-align: center;}
+</style>
+
+<script type="text/javascript">
+
+	// 내가 작성한 함수
+	function myAdd()
+	{	
+		// 내용 초기화
+		document.getElementById("result").value = "";
+		
+		var person = new Array();
+		var i=0;
+		do
+		{
+			var p = new Array();
+			p = prompt("이름 전화번호 입력("+ ++i +") : ").split();
+			
+			if (p == "." || p == " " || p == "")
+				break;
+			
+			person[i-1] = p;
+				
+		} while (true);
+		
+		alert(person);
+		
+		document.getElementById("count").value = person.length;
+		
+		for (var i = 0; i < person.length; i++)
+		{
+			document.getElementById("result").value += person[i] + "\n";
+		}
+				
+	}
+	
+	// 함께 작성한 함수
+	function actionPerformed()
+	{
+		var i = 0;
+		var arr = new Array();
+		var str = "";
+		do
+		{
+			str = prompt("이름 전화번호 입력(" + (i+1) +")");
+			
+			if  (str == "." || str == " " || str == "")
+				break;
+			
+			arr[i] = str;
+			i++;
+
+		} while (true);
+		
+		document.getElementById("resultAll").value = arr.length;
+		document.getElementById("result").value = "이름		전화번호\n"			
+		for (var n = 0; n < arr.length; n++)
+		{
+			document.getElementById("result").value += arr[n] + "\n";
+		}
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	여러명의 이름과 전화번호를 입력받고
+	그 내용을 전체 출력하는 페이지를 구성한다.
+	
+	HTML, CSS, Javascript 를 활용한다.
+	
+	prompt() 를 활용한다.
+	
+	페이지 레이아웃
+	--------------------------------------------------------
+	< 회원 정보 입력 > ------------------------------------- 버튼 클릭 → 이름 전화번호 입력(1) : 한혜림 010-1111-1111;
+	            														  이름 전화번호 입력(2) : 장서현 010-2222-2222;
+	            														  이름 전화번호 입력(3) : 입력없음 / . / 공백
+	
+	전체 회원 수 : [        ] 명
+	-----------------------------
+	    이름         전화번호
+	-----------------------------
+				:
+	
+	
+	
+	--------------------------------------------------------	
+-->
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<div>
+			<!-- 내가 작성한 함수 동작  -->
+			<!-- 
+			<input type="button" id="add" value="회원정보입력" style="width: 200px" onclick="myAdd()"><br><br>
+			 -->
+			
+			<!-- 함께 작성한 함수 동작 -->
+			<input type="button" id="add" value="회원정보입력" style="width: 200px" onclick="addMember()"><br><br>
+		</div>
+		
+		<div>
+			전체 회원 수 : 
+			<input type="text" id="count" style="width: 100px">
+			명
+			<hr style="width: 300px">
+			이름              전화번호
+			<hr style="width: 300px">
+		</div>
+		
+		<div>
+			<textarea rows="10" cols="30" id="result" readonly="readonly"></textarea>
+		</div>
+	
+	</form>
+	
+</div>
+
+
+
+
+</body>
+</html>
