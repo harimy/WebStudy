@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test019.html</title>
+
+<style type="text/css">
+	* {color: #223322; font-size: 15pt}
+	h1{font-size : 30pt}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeeff;}
+   input.btn {width: 150px; font-weight: bold; font-family: 맑은 고딕;}
+   input.btn:hover {color: orange;}
+   input.txt {width: 100px; text-align: right;}   
+   div form {text-align: center;}
+   textarea {font-family: 나눔고딕코딩; font-weight: bold;}
+</style>
+
+<script type="text/javascript">
+
+	// 내가 정의한 함수
+	function myCalc()
+	{
+		var num = parseInt(document.getElementById("num").value);
+		var sum = 0;
+		
+		if (num<100)
+		{
+			alert("100 보다 큰 정수를 입력해야 합니다.");
+			return;
+		}
+			
+
+		for (var i = 1; i <= num; i++)
+		{
+			sum += i;
+			
+			if (i%10==0)
+			{
+				document.getElementById("result").value += "1 ~ " + i + " : " + sum + "\n";
+			}
+		}
+	}
+	
+	// 함께 정의한 함수	
+	function actionPerformed()
+	{
+		// 테스트
+		//alert("함수 호출 확인~!!!")
+		
+		document.getElementById("result").value = "";
+		// ▶내가 처리하지 못한 부분 
+		// 결과 확인을 여러 번 누르게 되면 계속 누적값이 쌓이므로
+		// 함수를 호출할 때마다 textarea 를 초기화 해줄 수 있도록 처리해줘야 함
+		
+		
+		var nNum = Number(document.getElementById("num").value);
+		var nSum = 0;
+		
+		if (nNum < 100)
+		{
+			alert("입력 값은 100 이상만 가능합니다.");
+			return;
+		}
+		
+		for (var n=1; n<=nNum; n++) // 1부터 입력값(nNum)까지 1씩 증가하며 반복
+		{
+			nSum += n;
+			if (n%10==0)
+				document.getElementById("result").value += "1 ~ " + n + " : " + nSum + "\n";
+
+		}
+		
+		document.getElementById("result").value += ">> 1 ~ " + nNum + " : " + nSum + "\n";
+		
+		
+	}
+
+
+</script>
+
+
+</head>
+<body>
+
+<!-- 
+	1 부터 n까지의 합을 계산하되 n은 100이상만 허용하고
+	출력 시 10의 배수가 될 때 마다 중간 합을 출력할 수 있는
+	페이지를 구성한다.
+	반복문을 활용할 수 있도록 한다.
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃
+	-----------------------------------------------------------------
+	정수 입력(100 이상)      [           ]  → 조건 유효성
+	
+		< 결과 > < 취소 >
+		
+	------------------------------------------
+	1 ~ 10 : 55
+	1 ~ 20 : 210
+	1 ~ 30 : xxx
+	   : 
+	1 ~ 100 : 5050
+	------------------------------------------
+	
+	-----------------------------------------------------------------
+
+ -->
+ 
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<!-- div가 많은 것은 비슷한 속성들끼리 묶어서 배치, 적용 하기위함 -->
+		<div>
+			정수 입력 (100 이상) 
+			<input type="text" id="num" class="txt" style="width: 150px">
+		</div>
+		
+		<br>
+		<div>
+			<!-- 내가 작성한 함수 동작
+			<input type="button" id="btnResult" class="btn" value="결과" 
+			style="width: 150px" onclick="myCalc()"> 
+			-->
+			<!-- 함께 작성한 함수 동작 -->
+			<input type="button" id="btnResult" class="btn" value="결과" 
+			style="width: 150px" onclick="actionPerformed()">
+			<input type="reset" id="btnReset" class="btn" value="취소" style="width: 150px">
+		</div>
+		<br>
+		
+		<hr>
+		
+		<textarea rows="10" cols="40" id="result" class="txt" readonly="readonly"></textarea>
+		<!-- input text type 인 경우에는 사용자가 값을 직접 입력하는 게 아닐 때 disabled를 사용,
+		     textarea 의 경우는 readonly 라는 옵션을 사용한다. -->
+		<hr>
+	</form>
+</div>
+ 
+
+</body>
+</html>
