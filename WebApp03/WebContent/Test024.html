@@ -102,6 +102,8 @@
 			
 			if (str=="" || str=="." || str==" ")
 				break;
+			// prompt 에 아무것도 입력하지 않았을 때 반복문을 탈출하는 조건으로 null 대신 빈 문자열 "" 사용
+			// 아무것도 입력하지 않고 Enter를 치면 undefined 값이 존재해서 null 조건에 걸리지 않기 때문에
 			
 			var member = str.split(" "); // 문자열 요소 배열 구성
 			
