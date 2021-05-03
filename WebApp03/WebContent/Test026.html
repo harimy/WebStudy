@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+
+<style type="text/css">
+   * {font-family : 맑은 고딕; font-weight: bold;}
+   td {text-align: right;}
+</style>
+
+<script type="text/javascript">
+
+	// 내가 작성한 부분
+	// 달력 계산 함수
+	function calendar()
+	{
+		// 테스트
+		//alert("함수호출 확인");
+		
+		var y = parseInt(document.getElementById("txtYear").value);
+		var m = parseInt(document.getElementById("txtMonth").value);
+		
+		//alert(y + "년 " + m + "월");
+		
+		// 월 별 마지막 날짜
+		var last = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		
+		// 윤년 계산 
+		if(y%4==0 && y%100!=0 || y%400==0)
+			last[1] = 29;
+		
+		// 일 수 계산
+		var days = Math.floor((y-1)*365 + Math.floor((y-1)/4) - Math.floor((y-1)/100) + Math.floor((y-1)/400));
+		// 입력한 년도의 전 년도까지 전체 일수
+		// ex. 2021년 입력시 2020년 12월 31일까지의 일수
+		
+		//alert("days : " + days);
+		
+		for (var i = 0; i < m-1; i++)
+			days += last[i];
+		// 입력한 월의 전 월 까지 일수를 더해줌
+		// ex. 2021년 5월 입력시 4월 30일까지의 일수를 계산하여 더함
+		
+		//alert("days : " + days);
+		
+		days += 1;
+		// 입력한 년도, 월의 1일
+	
+		//alert("days : " + days);
+		
+		// 테이블노드 및 tr노트 생성
+		var tableNode = document.getElementById("calendarTbl");
+		var trNode = document.createElement("tr"); 	
+		
+		
+		// 시작 요일 
+		var first = days%7;
+		
+		//alert(first);
+		
+		for (var i = 1; i <= first; i++)
+		{
+			trNode.appendChild(createTdNode("    "));
+		}
+		// 시작요일 전까지는 공백처리
+		
+		
+		for (var i = 1; i <= last[m-1]; i++)
+		{
+			trNode.appendChild(createTdNode(i));
+			first++;
+			
+			if(first%7==0)
+			{
+				tableNode.appendChild(trNode);
+				trNode = document.createElement("tr");
+			}
+				
+		}
+		
+		tableNode.appendChild(trNode);
+			
+	}
+	
+	// tr노드 함수
+	function createTrNode(val)
+	{
+		//var trNode = document
+	}
+	
+	
+	// 매개변수로 입력받은 값을 tdnode에 추가해주는 함수
+	function createTdNode(val) 
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;	
+	}
+
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="text" id="txtYear" class="txt" style="width: 67px"> 년
+		<input type="text" id="txtMonth" class="txt" style="width: 67px"> 월
+		<br><br>
+		
+		<button type="button" class="btn" style="width: 200px;" onclick="calendar()">만년달력 그리기</button>
+		<br><br>
+		
+		<table border="1" id="calendarTbl">
+			<tr>
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+		</table>
+		
+	</form>
+</div>
+
+</body>
+</html>
