@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test028.html</title>
+
+<style type="text/css">
+	* {color: #223322; font-size: 15pt;}
+	h1{font-size : 30pt; text-align: center;}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeeff;}
+   input.btn {width: 150px; font-weight: bold; font-family: 맑은 고딕;}
+   input.btn:hover {color: orange;}
+   input.txt {width: 100px; text-align: center;}   
+   div {text-align: center;}
+   textarea {font-family: 나눔고딕코딩; font-weight: bold;}
+   input.txtArray {text-align: center;}
+</style>
+
+<script type="text/javascript">
+
+	function lotto()
+	{
+		var count = document.getElementById("txtCnt");
+		
+	}
+</script>
+
+
+</head>
+<body>
+
+<!-- 
+	로또 번호(1~45)를 중복되지 않은 정수 6개를 생성하여
+	출력해주는 페이지를 구현한다.
+	HTML, CSS, Javascript 를 활용한다.
+	난수 발생 함수를 활용한다.
+	번호 순으로(오름차순) 정렬하여 출력할 수 있도록 한다.
+	주문한 장 수 만큼 출력할 수 있도록 한다.
+	
+	페이지 레이아웃
+	------------------------------------------------------
+	로또 [  3  ] 장		<주문하기>
+	
+	결과
+	--------------------------------
+	3 11 12 22 30 34
+	6 13 22 24 36 39
+	2 3 22 34 37 38
+	--------------------------------
+	
+	------------------------------------------------------
+-->
+
+<div>
+	<h1>로또 생성기</h1>
+	<hr>
+</div>
+
+<div>
+	로또
+	<input type="text" id="txtCnt" class="txt" style="width: 65px;">
+	장
+	<button type="button" onclick=lotto()>주문하기</button>
+	<br><br>
+	
+	결과
+	<hr style="width: 360px">
+	<textarea rows="15" cols="30" id="result" readonly="readonly">
+	</textarea>
+	<hr style="width: 360px">	
+	
+</div>
+
+
+</body>
+</html>
