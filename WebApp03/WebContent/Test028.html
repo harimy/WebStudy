@@ -13,15 +13,63 @@
    input.btn:hover {color: orange;}
    input.txt {width: 100px; text-align: center;}   
    div {text-align: center;}
-   textarea {font-family: 나눔고딕코딩; font-weight: bold;}
-   input.txtArray {text-align: center;}
+   textarea {font-family: 나눔고딕코딩; font-weight: bold; text-align: center;}
 </style>
 
 <script type="text/javascript">
 
+	function generator()
+	{
+		var arr = new Array();
+		
+		// 로또 생성 및 중복 제거 
+		for (var i = 0; i < 6; i++) 
+		{
+			arr[i] = parseInt(Math.random() * 45) + 1;
+			
+			for (var j = 0; j < i; j++) 
+			{
+				if (arr[i] == arr[j])
+					i--;	
+			}
+		}
+		
+		// 정렬 → 향상된 버블 정렬
+		for (var i = 1; i < arr.length; i++) 
+		{
+			for (var j = 0; j < arr.length-i; j++) 
+			{
+				if(arr[j] > arr[j+1])
+				{
+					arr[j] = arr[j]^arr[j+1];
+					arr[j+1] = arr[j+1]^arr[j];
+					arr[j] = arr[j]^arr[j+1];
+				}
+			}		
+		}
+		
+		return arr;
+	}
+	
 	function lotto()
 	{
-		var count = document.getElementById("txtCnt");
+		var count = parseInt(document.getElementById("txtCnt").value);
+		var arr = new Array();
+		var result = "";
+		
+		for (var i = 0; i < count; i++) 
+		{
+			arr = generator();
+			
+			for (var j = 0; j < arr.length; j++) 
+			{
+				result += arr[j] + " ";
+			}
+			
+			result += "\n";
+		}
+		
+		document.getElementById("result").value = result;
 		
 	}
 </script>
