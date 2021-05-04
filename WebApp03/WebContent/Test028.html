@@ -18,6 +18,7 @@
 
 <script type="text/javascript">
 
+	// 내가 작성한 내용 
 	function generator()
 	{
 		var arr = new Array();
@@ -72,6 +73,72 @@
 		document.getElementById("result").value = result;
 		
 	}
+	
+	// 함께 작성한 내용 
+	function createLotto()
+	{
+		// 테스트
+		//alert("함수 호출 확인");
+		
+		var count = document.getElementById("txtCnt").value;
+		
+		// 추가 → 이전의 남아있던 내용 제거 
+		document.getElementById("result").value = "";
+		
+		for (var i = 0; i < count; i++) 
+		{
+			document.getElementById("result").value += runLottoSingle() + "\n";
+			
+		}
+		
+	}
+	
+	function runLottoSingle() 
+	{
+		// 방 6개로 구성된 배열 생성
+		var lottoArray = new Array(6);
+		
+		
+		// 로또 추첨 공 45개 생성
+		var arr = new Array(45);
+		
+		// 45개 추첨 공에 1 ~ 45 까지의 로또 번호 적어넣기
+		for (var i = 1; i < arr.length; i++)
+			arr[i-1] = i;
+		
+		// 테스트 
+		//alert(arr[9]);
+		
+		// 뒤섞기 
+		for (var i = 0; i < arr.length; i++) {
+			var j = parseInt(Math.random()*45);
+			var temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+		
+		// 테스트 
+		//return arr;
+		
+		// 배열의 요소 옮겨담기
+		for (var i = 0; i <lottoArray.length; i++) 
+		{
+			lottoArray[i] = arr[i];
+		}
+		
+		// 정렬(오름차순)
+		lottoArray.sort(function(left, right)
+		{
+			return Number(left)-Number(right);
+		});
+		// 자바스크립트 내장 함수 sort() 는 문자열을 기반으로 크기비교하는 함수 (아스키코드)
+		// 매개변수로 '크기비교기능'을 수행하는 익명의 함수를 넣어줌
+		// → 두 개의 파라미터를 받아서 left, right를 뺄셈연산하여 양수, 음수를 리턴하게 함 → 숫자의 크고작음을 리턴하게 됨 
+		
+		// 구성된 배열 반환
+		return lottoArray;
+		
+	}
 </script>
 
 
@@ -109,13 +176,16 @@
 	로또
 	<input type="text" id="txtCnt" class="txt" style="width: 65px;">
 	장
+	<!-- 내가 작성한 함수 동작 -->
+	<!--   
 	<button type="button" onclick=lotto()>주문하기</button>
+	-->
+	<button type="button" onclick=createLotto()>주문하기</button>
 	<br><br>
 	
 	결과
 	<hr style="width: 360px">
-	<textarea rows="15" cols="30" id="result" readonly="readonly">
-	</textarea>
+	<textarea rows="15" cols="30" id="result" readonly="readonly"></textarea>
 	<hr style="width: 360px">	
 	
 </div>
