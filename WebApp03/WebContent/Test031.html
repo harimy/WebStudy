@@ -103,7 +103,8 @@
 </script>
 
 </head>
-<!-- <body onchange="actionSelect()"> -->
+<!-- 내가 작성한 함수 동작 -->
+<!-- <body onchange="myActionSelect()"> -->
 <body>
 <div>
 	<h1>자바스크립트 활용</h1>
@@ -114,17 +115,17 @@
 	<h2>아이스크림 주문</h2>
 	<form>
 		-- 사이즈 선택 --<br>
-		<input type="radio" name="radioGroup" id="a1" value="1" onclick="countSet()">
+		<input type="radio" name="radioGroup" id="a1" value="1" onclick="countSet(1)">
 		<label for="a1">싱글(1)</label><br>
-		<input type="radio" name="radioGroup" id="b1" value="2">
+		<input type="radio" name="radioGroup" id="b1" value="2" onclick="countSet(2)">
 		<label for="b1">더블(2)</label><br>
-		<input type="radio" name="radioGroup" id="c1" value="3">
+		<input type="radio" name="radioGroup" id="c1" value="3" onclick="countSet(3)">
 		<label for="c1">파인트(3)</label><br>
-		<input type="radio" name="radioGroup" id="d1" value="4">
+		<input type="radio" name="radioGroup" id="d1" value="4" onclick="countSet(4)">
 		<label for="d1">쿼터(4)</label><br>
-		<input type="radio" name="radioGroup" id="e1" value="6">
+		<input type="radio" name="radioGroup" id="e1" value="6" onclick="countSet(6)">
 		<label for="e1">패밀리(6)</label><br>
-		<input type="radio" name="radioGroup" id="f1" value="8">
+		<input type="radio" name="radioGroup" id="f1" value="8" onclick="countSet(8)">
 		<label for="f1">하프갤런(8)</label><br>
 		<br><br>
 		

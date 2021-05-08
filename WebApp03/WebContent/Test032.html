@@ -83,8 +83,11 @@
 		// ---------------------------------------------------------------------- 테이블 그리기
 		
 		//formClear();
+		//-- 우리가 정의한 폼 클리어 함수
+		//   직원 추가 버튼을 누른 후 입력 창에서 입력한 정보를 지우고 초기화 시키는 기능을 수행
 		
-		document.forms[0].reset;
+		document.forms[0].reset();
+		//-- 내장된 폼클리어 함수
 		
 		document.getElementById("userName").focus();
 		
@@ -103,11 +106,11 @@
 		document.getElementById("userName").value = "";
 		document.getElementById("userSsn").value = "";
 		var cityObj = document.getElementById("userCity");
-		cityObj.option[1].selected = true;
+		cityObj.options[1].selected = true;
 		var buseoObj = document.getElementById("userDepartment");
-		buseoObj.option[3].selected = true;
+		buseoObj.options[3].selected = true;
 		var positionObj = document.getElementById("userPosition");
-		positionObj.option[3].selected = true;
+		positionObj.options[3].selected = true;
 		document.getElementById("userBasicPay").value = "";
 	}
 
