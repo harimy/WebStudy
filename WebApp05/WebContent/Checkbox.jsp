@@ -15,6 +15,8 @@
 </div>
 
 <div>
+	<!-- 내가 작성한 jsp 적용 -->
+	<!-- <form action="Checkbox_ok.jsp" method="post"> -->
 	<form action="Checkbox_ok.jsp" method="post">
 		이름<input type="text" name="name" class="txt"><br>
 		
