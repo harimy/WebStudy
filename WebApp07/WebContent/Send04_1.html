@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send04_1.html</title>
+
+<script type="text/javascript">
+	function infoCheck()
+	{
+		//alert("함수 호출 확인4");
+		var registerForm = document.register;
+		var id = document.getElementById("userId")
+		var pwd = document.getElementById("userPw");
+		var name = document.getElementById("userName");
+		var tel = document.getElementById("userTel");
+		
+		//alert("id : " + id);
+		
+		if(id.value=="" || pwd.value=="" || name.value=="" || tel.value=="" )
+		{
+			alert("필수 입력 항목을 빠짐없이 기재해주세요.");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+			
+	}
+</script>
+
+</head>
+<body>
+
+<!-- 
+	○ 데이터 송수신 실습 04
+	  - 회원 가입과 관련한 기본 정보를 입력받는 html 페이지를 작성한다.
+	  - 전송 전에 (클라이언트 측에서 작성한 내용을 서버에 제출하기 전에)
+	    입력 데이터에 대한 기본적인 검사 과정을 자바스크립트를 활용하여 추가할 수 있도록 한다.
+	    
+	    아이디(*)		[ textbox ]
+	    패스워드(*)	[ password ]
+	    이름(*)		[ textbox ]
+	    전화번호(*)	[ textbox ]
+	    
+	    성별  		● 여자 ○ 남자
+	    
+	    지역 			[ 서울 ▼ ]
+	    			  대전
+	    			  대구
+	    			  광주
+	    			  
+	    수강과목		ㅁ자바기초 ㅁ오라클중급 ㅁJDBC심화 ㅁJSP활용
+	    
+	   	<회원가입> <취소>
+	   	
+	 - 회원가입 버튼 클릭 시
+	   회원 입력 정보들의 내용을 출력하는 JSP 페이지를 구성하여
+	   데이터를 전달할 수 있도록 한다.
+	   
+	 - 사용자의 요청 주소는 
+	   http://localhost:8090/WebApp07/Send04.html 
+	   로 한다.
+	   
+	 - Send04.html
+	   Receive04.jsp
+ -->
+ 
+ <div>
+ 	<h1>데이터 송수신 실습 04</h1>
+ 	<hr>
+ </div>
+ 
+ <div>
+ 	<form name="register" action="Receive04_1.jsp" method="post" onsubmit="infoCheck(); return false">
+ 		<table>
+ 			<tr>
+ 				<th>아이디</th>
+ 				<td>
+ 					<input type="text" id="userId" name="userId">
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<th>비밀번호</th>
+ 				<td>
+ 					<input type="password" id="userPw" name="userPw">
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<th>이름</th>
+ 				<td>
+ 					<input type="text" id="userName" name="userName">
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<th>전화번호</th>
+ 				<td>
+ 					<input type="text" id="userTel" name="userTel">
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<th>성별</th>
+ 				<td>
+ 					<label><input type="radio" name="gender" value="F">여자</label>
+ 					<label><input type="radio" name="gender" value="M">남자</label>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<th>지역</th>
+ 				<td>
+	 				<select name="region">
+	 					<option value="서울">서울</option>
+	 					<option value="대전">대전</option>
+	 					<option value="대구">대구</option>
+	 					<option value="광주">광주</option>
+	 				</select>
+	 			</td>
+ 			</tr>
+ 			<tr>
+ 				<th>수강과목</th>
+ 				<td>
+ 					<label><input type="checkbox" name="subject" value="자바기초">자바기초</label>
+ 					<label><input type="checkbox" name="subject" value="오라클중급">오라클중급</label>
+ 					<label><input type="checkbox" name="subject" value="JDBC심화">JDBC심화</label>
+ 					<label><input type="checkbox" name="subject" value="JSP활용">JSP활용</label>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td colspan="2">
+ 					<button type="submit" class="btn">회원 가입</button>
+ 					<button type="reset" class="btn">취소</button>
+ 				</td>
+ 			</tr>
+ 		</table>
+ 	</form>
+ </div>
+
+</body>
+</html>
