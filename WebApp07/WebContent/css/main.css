@@ -45,4 +45,9 @@ body, p, div, span, input, table, th, td, select
 	background-color: #778877;
 }
 
+.tableMiddle
+{
+	border-collapse: collapse;
+	width: 50%
+}
 

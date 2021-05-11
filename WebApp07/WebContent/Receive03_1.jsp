@@ -26,6 +26,9 @@
 <meta charset="UTF-8">
 <title>Receive03_1.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<style type = "text/css">
+	span {color: blue; font-weight: : bold; font-size: 15pt;}
+</style>
 </head>
 <body>
 
@@ -35,8 +38,8 @@
 </div>
 
 <div>
-	<span>입력하신 </span><%=n1 %><span>와 </span><%=n2 %><span>의 연산 결과는 
-	</span><%=result %><span> 입니다.</span>
+	입력하신 <span><%=n1 %></span>와 <span><%=n2 %></span>의 연산 결과는 
+	<span><%=result %></span> 입니다.
 </div>
 
 </body>
