@@ -137,6 +137,49 @@
 	}
 	
 	calStr += "</tr>";
+	
+	calStr += "<tr>";
+	
+	// 빈 칸 공백 td 발생
+	for(int i=1; i<=week; i++)
+		calStr += "<td></td>";
+	
+	// 날짜 td 발생
+	for(int i=1; i<=lastDay; i++)
+	{
+		//calStr += "<td>" + i + "</td>";
+		
+		week++;
+		
+		if(selectYear==nowYear && selectMonth==nowMonth && i==nowDay && week%7==0)
+			calStr += "<td class='nowSat'>" + i + "</td>";
+		else if(selectYear==nowYear && selectMonth==nowMonth && i==nowDay && week%7==1)
+			calStr += "<td class='nowSun'>" + i + "</td>";
+		else if(selectYear==nowYear && selectMonth==nowMonth && i==nowDay)
+			calStr += "<td class='now'>" + i + "</td>";
+		else if(week%7==0)
+			calStr += "<td class='sat'>" + i + "</td>";
+		else if(week%7==1)
+			calStr += "<td class='sun'>" + i + "</td>";
+		else
+			calStr += "<td>" + i + "</td>";
+		
+		if (week%7==0)
+			calStr += "</tr><tr>";
+	}
+	
+	// 빈 칸 공백 td 발생
+	for(int i=0; i<=week; i++, week++)
+	{
+		if(week%7==0)
+			break;
+		
+		calStr += "<td></td>";
+	}
+	
+	if(week%7!=0)
+	    calStr += "<tr></tr>";
+	
 	calStr += "</table>";
 	
 	// ------------------------------------------------------ 달력 그리기
@@ -148,6 +191,15 @@
 <meta charset="UTF-8">
 <title>SendAndReceive07.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style type="text/css">
+	td {text-align: right;}
+	td.sat {color: blue;}
+	td.sun {color: red;}
+	td.now {background-color: aqua; font-weight: bold;}
+	td.nowSat {background-color: aqua; font-weight: bold; color: blue;}
+	td.nowSun {background-color: aqua; font-weight: bold; color: red;}
+</style>
 
 <script type="text/javascript">
 
