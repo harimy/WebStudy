@@ -25,7 +25,7 @@
 		memberCount += dao.count() + "명</span>";
 		
 		str.append("<table class='table'>");
-		str.append("<tr><th>번호</th><th>이름</th><th>전화번호</th>");
+		str.append("<tr><th>번호</th><th>이름</th><th>전화번호</th></tr>");
 		
 		// MemberDAO 객체의 lists() 메소드 호출 
 		//-- 반복문을 통해 <table> 하위 엘리먼트 생성
@@ -38,7 +38,6 @@
 			str.append("</tr>");
 		}
 		
-		str.append("");
 		str.append("</table>");
 	}
 	catch(Exception e)
