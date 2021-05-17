@@ -125,16 +125,105 @@ FROM TBL_MEMBERSCORE;
 COMMIT;
 --==>> 커밋 완료.
 
+--○ 인원 수 검색 쿼리문 구성 
+SELECT COUNT(*) AS TOT
+FROM TBL_MEMBERSCORE;
+--> 한 줄 구성
 
+--○ 성적 데이터 검색 쿼리문 구성(SID)
+SELECT SID, KOR, ENG, MAT
+FROM TBL_MEMBERSCORE
+WHERE SID = 1;
+--> 한 줄 구성
+SELECT SID, KOR, ENG, MAT FROM TBL_MEMBERSCORE WHERE SID = 1
+;
+--==>> 1	20	30	40
 
+--○ 성적 데이터 수정 쿼리문 구성 
+UPDATE TBL_MEMBERSCORE
+SET KOR=91, ENG=81, MAT=71
+WHERE SID=1;
+--> 한 줄 구성
+UPDATE TBL_MEMBERSCORE SET KOR=91, ENG=81, MAT=71 WHERE SID=1
+;
+--==>> 1 행 이(가) 업데이트되었습니다.
 
+--○ 커밋
+COMMIT;
+--==>> 커밋 완료.
 
+--○ 성적 데이터 삭제 쿼리문 구성 
+DELETE
+FROM TBL_MEMBERSCORE
+WHERE SID=1;
+--> 한 줄 구성
+DELETE FROM TBL_MEMBERSCORE WHERE SID=1
+;
+--==>> 1 행 이(가) 삭제되었습니다.
 
+--○ 롤백
+ROLLBACK;
 
+--○ 전체 데이터 조회 쿼리문 구성 → 모든 리스트 조회 가능하도록 개선 → LEFT JOIN
+--                        → 데이터 타입 안정화 → NVL 
+SELECT M.SID, M.NAME, M.TEL
+     , NVL(S.KOR, -1) AS KOR
+     , NVL(S.ENG, -1) AS ENG
+     , NVL(S.MAT, -1) AS MAT
+FROM TBL_MEMBER M, TBL_MEMBERSCORE S
+WHERE M.SID = S.SID(+);
+--==>> 
+/*
+1	박나현	010-1111-1111	20	30	40
+2	한혜림	010-2222-2222	-1	-1	-1
+3	김아별	010-3333-3333	-1	-1	-1
+4	선혜연	010-4444-4444	-1	-1	-1
+5	전혜림	010-5555-5555	-1	-1	-1
+*/
 
+--○ 전체 데이터 조회 전용 뷰 생성(VIEW_MEMBERSCORE)
+CREATE OR REPLACE VIEW VIEW_MEMBERSCORE
+AS
+SELECT M.SID, M.NAME, M.TEL
+     , NVL(S.KOR, -1) AS KOR
+     , NVL(S.ENG, -1) AS ENG
+     , NVL(S.MAT, -1) AS MAT
+FROM TBL_MEMBER M, TBL_MEMBERSCORE S
+WHERE M.SID = S.SID(+);
+--==>> View VIEW_MEMBERSCORE이(가) 생성되었습니다.
 
+--○ 생성한 뷰(VIEW_MEMBERSCORE)를 활용한 리스트 조회 쿼리문 구성
+SELECT SID, NAME, KOR, ENG, MAT
+     , (KOR+ENG+MAT) AS TOT
+     , ((KOR+ENG+MAT)/3) AS AVG
+     , RANK() OVER(ORDER BY (KOR+ENG+MAT) DESC)AS RANK
+FROM VIEW_MEMBERSCORE;
+--> 한 줄 구성 
+SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, ((KOR+ENG+MAT)/3) AS AVG, RANK() OVER(ORDER BY (KOR+ENG+MAT) DESC)AS RANK FROM VIEW_MEMBERSCORE
+;
+--==>>
+/*
+1	박나현	20	30	40	90	30	1
+5	전혜림	-1	-1	-1	-3	-1	2
+4	선혜연	-1	-1	-1	-3	-1	2
+2	한혜림	-1	-1	-1	-3	-1	2
+3	김아별	-1	-1	-1	-3	-1	2
+*/
 
+--○ 생성한 뷰(VIEW_MEMBERSCORE)를 활용한 번호 검색 쿼리문 구성 
+SELECT SID, NAME, KOR, ENG, MAT
+FROM VIEW_MEMBERSCORE
+WHERE SID=1;
+--> 한 줄 구성 
+SELECT SID, NAME, KOR, ENG, MAT FROM VIEW_MEMBERSCORE WHERE SID=1
+;
+--==>> 1	박나현	20	30	40
 
-
-
-
+--○ 참조데이터 레코드 수 확인 쿼리문 구성
+SELECT COUNT(*) AS COUNT
+FROM TBL_MEMBERSCORE
+WHERE SID=1;
+--> 한 줄 구성
+SELECT COUNT(*) AS COUNT FROM TBL_MEMBERSCORE WHERE SID=1
+;
+--==>> 1
