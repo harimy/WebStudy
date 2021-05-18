@@ -2,11 +2,16 @@
 <%@page import="com.test.MemberScoreDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	// 데이터 수신 (MemberScoreSelect.jsp 로 부터 sid 수신)
+	// 데이터 수신 (MemberScoreSelect.jsp 로 부터 sid 수신) 
+	request.setCharacterEncoding("UTF-8");
+
 	String sid = request.getParameter("sid");
 	String name = "";
+	int kor=0;
+	int eng=0;
+	int mat=0;
 	
-	// name 을 조회하기 위해 dao 인스턴스 생성
+	// name 을 조회하기 위해 dao 인스턴스 생성 
 	MemberScoreDAO dao = new MemberScoreDAO();
 	
 	try
@@ -16,6 +21,9 @@
 		// 수신한 sid 를 활용하여 name 얻어내기
 		MemberScoreDTO score = dao.search(sid);
 		name = score.getName();
+		kor = score.getKor();
+		eng = score.getEng();
+		mat = score.getMat();
 	}
 	catch(Exception e)
 	{
@@ -38,10 +46,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MemberScoreInsertForm.jsp</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/MemberScore.css">
 <script type="text/javascript">
-	
+
 	function memberScoreSubmit()
 	{
 		// 테스트
@@ -109,13 +117,14 @@
 		memberScoreForm.reset();
 		kor.focus();
 	}
+
 </script>
 </head>
 <body>
 
 <!-- http://localhost:8090/WebApp12/MemberScoreInsertForm.jsp -->
 <div>
-	<h1>회원 성적 관리 및 <span style="color: green:">입력</span> 페이지</h1>
+	<h1>회원 성적 관리 및 <span style="color: green:">수정</span> 페이지</h1>
 	<hr>
 </div>
 
@@ -125,9 +134,8 @@
 <br>
 
 <div>
-	<!-- 회원 성적 입력 폼 구성 -->
-	<form action="MemberScoreInsert.jsp?sid=<%=sid %>" method="post" id="memberScoreForm">
-	<!-- 히든태그로 숨겨서 sid 전송하는 방법 -->
+	<!-- 회원 성적 수정 폼 구성 -->
+	<form action="MemberScoreUpdate.jsp?sid=<%=sid %>" method="post" id="memberScoreForm">
 	<%-- <input type="hidden" name="sid" value="<%=sid %>"> --%>
 		<table class="table">
 			<tr>
@@ -147,7 +155,7 @@
 			<tr>
 				 <th>국어점수</th>
 				 <td>
-				 	<input type="text" id="kor" name="kor" class="txtScore">
+				 	<input type="text" id="kor" name="kor" class="txtScore" value="<%=kor%>">
 				 </td>
 				 <td>
 				 	<span class="errMsg" id="korMsg">
@@ -158,7 +166,7 @@
 			<tr>
 				 <th>영어점수</th>
 				 <td>
-				 	<input type="text" id="eng" name="eng" class="txtScore">
+				 	<input type="text" id="eng" name="eng" class="txtScore" value="<%=eng%>">
 				 </td>
 				 <td>
 				 	<span class="errMsg" id="engMsg">
@@ -169,7 +177,7 @@
 			<tr>
 				 <th>수학점수</th>
 				 <td>
-				 	<input type="text" id="mat" name="mat" class="txtScore">
+				 	<input type="text" id="mat" name="mat" class="txtScore" value="<%=mat%>">
 				 </td>
 				 <td>
 				 	<span class="errMsg" id="matMsg">
@@ -180,11 +188,12 @@
 		</table>
 		<br>
 		
-		<a href="javascript:memberScoreSubmit()"><button type="button">입력하기</button></a>
+		<a href="javascript:memberScoreSubmit()"><button type="button">수정하기</button></a>
 		<a href="javascript:memberScoreReset()"><button type="button">취소하기</button></a>
 		<a href="MemberScoreSelect.jsp"><button type="button">목록으로</button></a>
 	</form>
 </div>
 
 </body>
+</html>
 </html>

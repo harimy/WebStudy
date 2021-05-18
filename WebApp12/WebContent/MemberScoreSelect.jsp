@@ -60,6 +60,7 @@
 				str.append("</button>");
 				str.append("</a>");
 				
+				/* 기능하지 않음 */
 				str.append("<button type='button' class='btn02'>");
 				str.append("수정");
 				str.append("</button>");
@@ -70,18 +71,24 @@
 			}
 			else
 			{
+				/* 기능하지 않음 */
 				str.append("<td>");
 				str.append("<button type='button' class='btn02'>");
 				str.append("입력");
 				str.append("</button>");
 				
+				str.append("<a href='MemberScoreUpdateForm.jsp?sid=" + score.getSid() + "'>");
 				str.append("<button type='button' class='btn01'>");
 				str.append("수정");
 				str.append("</button>");
+				str.append("</a>");
+				
+				str.append("<a href='javascript:scoreDelete(" + score.getSid() + ", \"" + score.getName() + "\")'>");
 				str.append("<button type='button' class='btn01'>");
 				str.append("삭제");
 				str.append("</button>");
 				str.append("</td>");
+				str.append("</a>");
 			}
 			
 			str.append("</tr>");
@@ -112,6 +119,21 @@
 <meta charset="UTF-8">
 <title>MemberScoreSelect.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/MemberScore.css">
+<script type="text/javascript">
+	
+	function scoreDelete(sid, name)
+	{
+		// ※ name 문자열을 넘기는 과정에서 따옴표 구성 주의
+		var res = confirm("번호:" + sid + ", 이름: " + name + "\n이 회원의 성적 데이터를 삭제하시겠습니까?");
+		
+		// 테스트
+		//alert(res);
+		
+		if (res)
+			window.location.href="MemberScoreDelete.jsp?sid="+sid;
+	}
+	
+</script>
 </head>
 <body>
 
