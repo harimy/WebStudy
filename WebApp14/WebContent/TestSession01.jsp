@@ -12,7 +12,10 @@
 		// 테스트
 		//alert("함수 호출 확인");
 		
-		var f = document.myForm[0];
+		//var f = document.forms[0];
+		//-- 폼 이름을 지정하지 않을 시 이런식으로도 사용 가능 
+		var f = document.myForm;
+		//-- 폼 이름을 지정했으면 myForm 이라는 이름으로 바로 접근 가능
 		
 		if(!f.userName.value)
 		{

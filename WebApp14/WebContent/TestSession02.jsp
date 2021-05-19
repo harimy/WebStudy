@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
+	request.setCharacterEncoding("UTF-8");
+	//-- TestSession01 의 이름을 받아서 03 페이지로 넘겨줘야 하므로 
+	//   한글 깨짐 방지 처리가 필요함.
+
 	// 데이터 수신 (TestSession01.jsp 페이지로부터)
 	// → userName, userBirth
 	String userName = request.getParameter("userName");
@@ -67,8 +71,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<button type="button" style="width: 100%" onclick="sendIt()"
-				style="width: 380px;">전송하기</button>
+				<button type="button" onclick="sendIt()"
+				style="width: 400px; font-size: 17pt;">전송하기</button>
 				</td>
 			</tr>
 		</table>
