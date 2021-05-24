@@ -20,8 +20,10 @@
 	if(pageNum != null)
 		currentPage = Integer.parseInt(pageNum);
 
+	
 	Connection conn = DBConn.getConnection();
 	BoardDAO dao = new BoardDAO(conn);
+	
 	MyUtil myUtil = new MyUtil();
 	
 	// 전체 데이터 개수 구하기
@@ -106,7 +108,7 @@
 		
 		<div id="rightHeader">
 			<input type="button" value="글올리기" class="btn2"
-			onclick="javascript:location.href='<%=cp %>/Created.jsp'">	
+			onclick="javascript:location.href='<%=cp%>/Created.jsp'">	
 		</div>
 		
 	</div><!-- #bbsList_header  -->
@@ -139,7 +141,11 @@
 			%>
 			<dl>
 				<dd class="num"><%=dto.getNum() %></dd>
-				<dd class="subject"><%=dto.getSubject() %></dd>
+				<dd class="subject">
+					<a href="<%=articleUrl%>&num=<%=dto.getNum()%>">
+					<%=dto.getSubject() %>
+					</a>
+				</dd>
 				<dd class="name"><%=dto.getName() %></dd>
 				<dd class="created"><%=dto.getCreated() %></dd>
 				<dd class="hitCount"><%=dto.getHitCount() %></dd>
