@@ -137,7 +137,7 @@ public class MyUtil
 		
 		// 마지막 페이지 (→ 끝으로)
 		if( (totalPage>numPerBlock) && ((currentPageSetup + numPerBlock)<totalPage) )
-			strList.append(" <a href='" + listUrl + "pageNum" + totalPage + "'>" + totalPage + "</a>");
+			strList.append(" <a href='" + listUrl + "pageNum=" + totalPage + "'>" + totalPage + "</a>");
 		
 		return strList.toString();
 		
