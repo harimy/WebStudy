@@ -137,3 +137,7 @@ VALUES(1, '박정준', '1234', 'joon@test.com', '작성테스트', '내용물작
 --○ 커밋
 COMMIT;
 --==>> 커밋 완료.
+
+SELECT *
+FROM TBL_BOARD
+WHERE NUM=786;

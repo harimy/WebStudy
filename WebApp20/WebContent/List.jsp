@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="com.test.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.util.MyUtil"%>
@@ -20,6 +21,26 @@
 	if(pageNum != null)
 		currentPage = Integer.parseInt(pageNum);
 
+	// 검색기능 추가
+	// 검색 키와 검색 값 수신
+	String searchKey = request.getParameter("searchKey");
+	String searchValue = request.getParameter("searchValue");
+	
+	if (searchKey != null) 	//-- 검색 기능을 통해 페이지가 요청되었을 경우
+	{
+		// 넘어온 값이 GET 방식이라면
+		// → GET 은 한글 문자열을 인코딩해서 보내기 때문에 디코딩 처리
+		if (request.getMethod().equalsIgnoreCase("GET"))	// GET 인지 POST 인지 확인할 수 있는 메소드 
+		{
+			// 디코딩 처리
+			searchValue = URLDecoder.decode(searchValue, "UTF-8");
+		}
+	}
+	else					//-- 기본적인 페이지 요청이 이루어졌을 경우
+	{
+		searchKey = "subject";
+		searchValue = "";
+	}
 	
 	Connection conn = DBConn.getConnection();
 	BoardDAO dao = new BoardDAO(conn);
@@ -27,7 +48,8 @@
 	MyUtil myUtil = new MyUtil();
 	
 	// 전체 데이터 개수 구하기
-	int dataCount = dao.getDataCount();
+	//int dataCount = dao.getDataCount();
+	int dataCount = dao.getDataCount(searchKey, searchValue);	// 검색 기능 추가
 	
 	// 전체 페이지를 기준으로 총 페이지 수 계산
 	int numPerPage = 10; 	//-- 한 페이지에 표시할 데이터 개수
@@ -44,13 +66,19 @@
 	int end = currentPage * numPerPage;
 	
 	// 실제 리스트 가져오기
-	List<BoardDTO> lists = dao.getLists(start, end);
+	//List<BoardDTO> lists = dao.getLists(start, end);
+	List<BoardDTO> lists = dao.getLists(start, end, searchKey, searchValue);	// 검색 기능 추
 	
 	// 페이징 처리
 	String param = "";
 	
 	// 검색 기능 추가 → param 구성
-	
+	if (!searchValue.equals(""))	// 검색값이 존재한다면
+	{
+		param += "?searchKey=" + searchKey;
+		param += "&searchValue=" + searchValue;
+	}
+		
 	String listUrl = "List.jsp" + param;	//-- 상대경로 접근 방식(내 위치를 기준으로 경로 설정)
 	String pageIndexList = myUtil.pageIndexList(currentPage, totalPage, listUrl);
 	
@@ -75,6 +103,20 @@
 <title>List.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/style.css">
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css">
+<script type="text/javascript">
+
+	// 검색
+	function sendIt()
+	{
+		var f = document.searchForm;
+		
+		// 검색 키워드에 대한 유효성 검사 코드 활용 가능
+		
+		f.action = "<%=cp%>/List.jsp";
+		f.submit();
+	}
+
+</script>
 </head>
 <body>
 
@@ -136,7 +178,7 @@
 			-->
 			
 			<%
-			for (BoardDTO dto : lists )
+			for (BoardDTO dto : lists)
 			{
 			%>
 			<dl>

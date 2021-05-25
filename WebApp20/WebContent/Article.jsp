@@ -151,17 +151,20 @@
 	
 	<div id="bbsArticle_footer">
 		<div id="leftFooter">
-			<input type="button" value="수정" class="btn2">
-			<input type="button" value="삭제" class="btn2">
+			<input type="button" value="수정" class="btn2"
+			onclick="javascript:location.href='<%=cp%>/Updated.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" value="삭제" class="btn2"
+			onclick="javascript:location.href='<%=cp%>/Delete.jsp?num=<%=dto.getNum()%>&pageNum=<%=pageNum%>'">
 		</div><!-- #bbsArticle_footer -->
 	
 		<div id="rightFooter">
-         	<input type="button" value="리스트" class="btn2">
+         	<input type="button" value="리스트" class="btn2"
+         	onclick="javascript:location.href='<%=cp%>/List.jsp?pageNum=<%=pageNum%>'">
+         	<!-- 검색 시에는 리스트 버튼의 주소에 검색에 대한 키워드도 넘겨줘야함 -->
       	</div><!-- #rightFooter -->
       	
    	</div><!-- .bbsArticle_footer -->
 
-	
 </div><!-- #bbs -->
 
 </body>
