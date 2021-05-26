@@ -15,10 +15,10 @@
 	
 	<!-- 서블릿 매핑 샘플 -->
 	<!-- 
-	<sevlet>
+	<servlet>
 		<servlet-name></servlet-name>
 		<servlet-class></servlet-class>
-	</sevlet>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name></servlet-name>
