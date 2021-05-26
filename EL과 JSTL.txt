@@ -92,7 +92,7 @@ EL     : ${xxx} → 훨씬 더 편하고 안정적
     이어 오픈되는 대화창에서
     최초 디렉티브(page) 아래에 다음과 같은 내용 추가
 
-    『<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jspl/core"%>』
+    『<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>』
 
   - JSTL 사용
     
@@ -137,11 +137,11 @@ EL     : ${xxx} → 훨씬 더 편하고 안정적
     - URI : http://java.sun.com/jsp/jstl/functions
 
 ※ JSTL 에 taglib 추가
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jspl/core"%>
-<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jspl/xml"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jspl/fmt"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jspl/sql"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jspl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 
