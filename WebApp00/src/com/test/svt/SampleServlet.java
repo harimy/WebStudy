@@ -3,7 +3,7 @@
    - 서블릿 샘플
 =======================*/
 
-package com.test;
+package com.test.svt;
 
 import java.io.IOException;
 

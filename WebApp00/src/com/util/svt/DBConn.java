@@ -4,7 +4,7 @@
    - 예외 처리 : throws
 ==============================*/
 
-package com.util;
+package com.util.svt;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
