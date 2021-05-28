@@ -29,6 +29,8 @@
 	
 	request.setAttribute("lists", lists);
 	
+	// jsp 액션 태그 대신에 request Dispatcher 로 포워딩하는 것도 가능
+	
 %>
 
 <jsp:forward page="MemberList.jsp"></jsp:forward>
