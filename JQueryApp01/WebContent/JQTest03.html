@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest03.html</title>
+<style type="text/css">
+	*
+	{
+		margin: 0px;
+		padding: 0px;
+	}
+	div
+	{
+		margin: 5px;
+		padding: 5px;
+		border: 3px solid black;
+		border-radius: 10px;
+	}
+</style>
+
+<script tyep="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+	// 제이쿼리 함수
+	//$();
+	//jquery();
+	$(document).ready(function()
+	{
+		$("div").click(function()
+		{
+			//alert("test");
+			//alert( $(this).html() );	// html 코드로 보여짐 
+			//alert( $(this).text() );	// html 코드 내부의 텍스트만 보여짐
+			
+			//alert( $("h1", this).text() ); 	// html 중 h1 엘리먼트의 내용만 보여짐
+			//alert( $("p", this).text() );		// html 중 p 엘리먼트의 내용만 보여짐
+			
+			var h1 = $("h1", this).text();
+			var p = $("p", this).text();
+			
+			alert(h1 + "/" + p);
+		});
+	});
+	//-- 문서가 로드됐을 때 ready 가 실시간으로 감시한다. 
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>A강의실</h1>
+	<p>JAVA 수업 중</p>
+</div>
+
+<div>
+	<h1>B강의실</h1>
+	<p>.NET 수업 중</p>
+</div>
+
+<div>
+	<h1>C강의실</h1>
+	<p>ORACLE 수업 중</p>
+</div>
+
+<div>
+	<h1>D강의실</h1>
+	<p>ASP 수업 중</p>
+</div>
+
+<div>
+	<h1>E강의실</h1>
+	<p>JSP 수업 중</p>
+</div>
+
+<div>
+	<h1>F강의실</h1>
+	<p>JQUERY 수업 중</p>
+</div>
+
+</body>
+</html>
