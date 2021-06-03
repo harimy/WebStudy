@@ -8,7 +8,7 @@
 
   AJAX 는 하나의 독립된 기술이 아니다.
   화면은 HTML + CSS 로 구성 및 작성하고
-  화면에 대한 조작과 상호 작용은 문객체모델(Document Object Model : DOM)로 처리하고
+  화면에 대한 조작과 상호 작용은 문서객체모델(Document Object Model : DOM)로 처리하고
   데이터 교환은 XML 형식으로 처리하며,
   데이터 변환과 검색은 XML 기술인 XSL 과 XPath 를 사용하며,
   비동기 통신에는 웹 브라우저 안에 내장되어 있는
