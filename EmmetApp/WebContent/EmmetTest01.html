@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EmmetTest01.html</title>
+</head>
+<body>
+
+<div>
+	<h1>※ 기능 적용 키(액션 키) → Ctrl + E </h1>
+</div>
+
+1. 태그 선택자
+
+div
+<div></div>
+
+div{}
+<div></div>
+
+div{abcd}
+<div>abcd</div>
+
+a
+<a href=""></a>
+
+img
+<img src="" alt="" />
+
+
+
+2. 아이디 선택자
+
+div#box
+<div id="box"></div>
+
+div#box{kkkk}
+<div id="box">kkkk</div>
+
+#box
+<div id="box"></div>
+
+#box{bbbb}
+<div id="box">bbbb</div>
+
+
+
+3. 클래스 선택자
+
+div.items
+<div class="items"></div>
+
+div.items{aaaa}
+<div class="items">aaaa</div>
+
+.items
+<div class="items"></div>
+
+.items{tttt}
+<div class="items">tttt</div>
+
+
+
+4. 조합
+
+div#box.items
+<div id="box" class="items"></div>
+
+div#box.items.unit.control
+<div id="box" class="items unit control"></div>
+
+div#box.items.unit{aaaa}
+<div id="box" class="items unit">aaaa</div>
+
+#box.items.unit{aaaa}
+<div id="box" class="items unit">aaaa</div>
+
+
+
+5. 속성 선택자
+
+div[title]
+<div title=""></div>
+
+div[title='test']
+<div title="test"></div>
+
+a[href='www.naver.com' title='네이버']
+<a href="www.naver.com" title="네이버"></a>
+
+a[href='www.naver.com' title='네이버']{사이트 이동}
+<a href="www.naver.com" title="네이버">사이트 이동</a>
+
+
+
+6. PCDATA
+
+div{박스}
+<div>박스</div>
+
+a{홈페이지로 이동}
+<a href="">홈페이지로 이동</a>
+
+p{문단의 내용 기술}
+<p>문단의 내용 기술</p>
+
+
+
+7. 반복 생성
+
+div*5
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+img[src=images/dog.jpg]*5
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+
+.box*5
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+.box{box}*5
+<div class="box">box</div>
+<div class="box">box</div>
+<div class="box">box</div>
+<div class="box">box</div>
+<div class="box">box</div>
+
+#box$*5
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+<div id="box5"></div>
+
+div ... class=box ... id=box1~5 ... pcdata=box1~5
+.box#box${box$}*5
+<div class="box" id="box1">box1</div>
+<div class="box" id="box2">box2</div>
+<div class="box" id="box3">box3</div>
+<div class="box" id="box4">box4</div>
+<div class="box" id="box5">box5</div>
+
+img[src=images/obj0$.jpg]*5
+<img src="images/obj01.jpg" alt="" />
+<img src="images/obj02.jpg" alt="" />
+<img src="images/obj03.jpg" alt="" />
+<img src="images/obj04.jpg" alt="" />
+<img src="images/obj05.jpg" alt="" />
+
+h${제목$}*6
+<h1>제목1</h1>
+<h2>제목2</h2>
+<h3>제목3</h3>
+<h4>제목4</h4>
+<h5>제목5</h5>
+<h6>제목6</h6>
+
+
+
+8. 연속 생성
+
+div+p
+<div></div>
+<p></p>
+
+h1{제목}+p{내용}*5
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+
+(h1{제목$}+p{내용$}*2)*5
+<h1>제목1</h1>
+<p>내용1</p>
+<p>내용2</p>
+<h1>제목2</h1>
+<p>내용1</p>
+<p>내용2</p>
+<h1>제목3</h1>
+<p>내용1</p>
+<p>내용2</p>
+<h1>제목4</h1>
+<p>내용1</p>
+<p>내용2</p>
+<h1>제목5</h1>
+<p>내용1</p>
+<p>내용2</p>
+
+div+a+div+p+div+img
+<div></div>
+<a href=""></a>
+<div></div>
+<p></p>
+<div></div>
+<img src="" alt="" />
+
+
+
+9. 하위 생성
+
+table+
+<table>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+
+ul+
+<ul>
+	<li></li>
+</ul>
+
+ol+
+<ol>
+	<li></li>
+</ol>
+
+select+
+<select name="" id="">
+	<option value=""></option>
+</select>
+
+
+
+10. 자식 생성
+
+div>p
+<div>
+	<p></p>
+</div>
+
+div>p*5
+<div>
+	<p>첫 번째 문단</p>
+	<p>두 번째 문단</p>
+	<p>세 번째 문단</p>
+	<p>네 번째 문단</p>
+	<p>다섯 번째 문단</p>
+</div>
+
+(div>p*2)*5
+<div>
+	<p></p>
+	<p></p>
+</div>
+<div>
+	<p></p>
+	<p></p>
+</div>
+<div>
+	<p></p>
+	<p></p>
+</div>
+<div>
+	<p></p>
+	<p></p>
+</div>
+<div>
+	<p></p>
+	<p></p>
+</div>
+
+table#tbl>tr*5>td*3
+<table id="tbl">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+table#tbl>tr*3>td.label+td.content
+<table id="tbl">
+	<tr>
+		<td class="label"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td class="label"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td class="label"></td>
+		<td class="content"></td>
+	</tr>
+</table>
+
+table#tbl>tr*3>td#label$+td.content
+<table id="tbl">
+	<tr>
+		<td id="label1"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td id="label2"></td>
+		<td class="content"></td>
+	</tr>
+	<tr>
+		<td id="label3"></td>
+		<td class="content"></td>
+	</tr>
+</table>
+
+table#tbl>(tr>th*3)+((tr>td*3)*5)
+<table id="tbl">
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+
+lorem
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Laudantium exercitationem ea animi temporibus quos id fugiat quia vel. 
+Nulla soluta laborum illo ea at facilis fugiat magnam quas optio aliquid.
+
+lorem
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque possimus ex quasi praesentium debitis quas nisi ad quis cumque odit assumenda ullam placeat dicta. Amet sapiente odit nesciunt voluptatem blanditiis!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate doloribus consectetur quod porro magni repudiandae molestias enim suscipit reprehenderit vitae in quos sequi temporibus laboriosam ipsam libero similique eaque neque.
+
+lorem
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ab provident dolorum quidem velit ipsa modi laudantium soluta incidunt eum expedita distinctio repellendus fugit ipsam mollitia eligendi obcaecati illum delectus!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque dolores distinctio repudiandae quam eveniet aspernatur debitis quos aut earum veritatis. Hic soluta ut asperiores numquam quasi unde quia quam aliquam.
+
+
+<table>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+
+div>p
+<div>
+	<p></p>
+</div>
+
+table>(tr>th*2)+(tr>(td{word}+td{content}))*10
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>content</td>
+	</tr>
+</table>
+
+table>(tr>th*2)+(tr>(td{word}+td{lorem}))*10          <!-- X -->
+
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur expedita modi saepe adipisci omnis iste quia unde nemo in dolore alias fugiat earum fugit harum vero ipsam perferendis itaque delectus.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Quas facere quibusdam ex earum tempora inventore ea voluptates qui ad dolorum sunt veritatis exercitationem sapiente consequuntur cumque consectetur culpa ratione laborum incidunt dolores aliquid blanditiis obcaecati iure libero quasi!</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Nesciunt in error eius impedit numquam voluptate neque at non sit praesentium labore cum natus quisquam beatae architecto illum libero ducimus. Officia deserunt iusto accusantium quod iure error sapiente animi.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Blanditiis adipisci quod eveniet placeat dignissimos ab asperiores deserunt neque culpa sequi beatae illo ratione rem. Molestiae quod delectus ex totam perspiciatis a minima adipisci consequuntur sunt cumque voluptate omnis.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Error cum eum sapiente possimus aperiam aut eaque! Qui maxime laborum repellendus vel nisi assumenda iure praesentium quasi a quos exercitationem quas deserunt soluta obcaecati est officia cum ducimus quo.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Iure nam dolorum beatae quam aspernatur cum voluptas sit esse voluptatibus recusandae? Pariatur doloremque eligendi amet voluptate nulla atque qui omnis? Quis iusto deserunt nisi excepturi consequatur doloribus reprehenderit dolor!</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Modi ut iure eaque inventore blanditiis doloremque esse voluptatum iusto voluptatibus ratione itaque doloribus soluta minima et facere eveniet culpa molestias molestiae asperiores accusamus accusantium voluptates quod. Officia fugit saepe.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Delectus optio eveniet quas sed officia ullam aspernatur alias quam ratione dicta sit eligendi voluptatum voluptate explicabo dolores officiis necessitatibus! Enim expedita eius aut rerum quae numquam voluptatum veniam laborum.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Odit vel numquam modi sit expedita quam tempora totam fuga accusantium beatae consequatur voluptatem. Inventore vel ad reprehenderit ex soluta neque at necessitatibus maiores earum non optio explicabo nam ratione.</td>
+	</tr>
+	<tr>
+		<td>word</td>
+		<td>Itaque laborum repudiandae laboriosam voluptas soluta quis architecto voluptatum qui animi facere aut quam placeat quia maxime ipsa rerum quisquam nam facilis sint numquam magni perferendis commodi iusto enim aliquam!</td>
+	</tr>
+</table>
+
+
+
+</body>
+</html>
