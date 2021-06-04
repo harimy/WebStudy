@@ -1,6 +1,5 @@
 /*=======================
-   SampleServlet.java
-   - 서블릿 샘플
+   Test02.java
 =======================*/
 
 package com.test.ajax;
