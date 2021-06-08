@@ -43,6 +43,9 @@
 			// callBack() → 기능 → 함수
 			
 			
+			// $.get("GetTest01_ok.jsp", {su1:su1, su2:su2, oper:oper}, function(args){$("#result").html(args);});
+			// $.get("요청 URL", {이름, 값}, function(넘겨받은값){$(선택자).html(값)}
+			
 		});
 	});
 
@@ -67,6 +70,7 @@
 	<input type="text" id="su2" class="txt txtNum"> 
 	<input type="button" value=" = " id="sendButton" class="btn">
 </div>
+<br>
 
 <div id="result">
 </div>
